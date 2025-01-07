@@ -40,9 +40,9 @@
             margin-right: 5rem;
         }
         .menu > * {
-            font-size: 20px;
-            padding-bottom: 20px;
-            padding-top: 20px;
+            font-size: 15px;
+            padding-bottom: 10px;
+            padding-top: 10px;
             width: 150px;
             text-align: center;
             cursor: pointer;
@@ -51,7 +51,8 @@
             background-color: rgb(166, 166, 166);
         }
         .menu > *:hover {
-            border: 2px solid black;
+            border: 2px solid rgb(109, 109, 109);
+            background-color: lightgray;
         }
 
         #main {
@@ -94,11 +95,11 @@
         <div class="logo">
         </div> 
         <div class="menu">
-            <div class="bezier" onclick="">
+            <div class="bezier" onclick="show('bezier')">
                 Bezier
             </div>
-            <div class="svg" onclick="">Svg</div>
-            <div class="png" onclick="">Png</div>
+            <div class="svg" onclick="show('svg')">Svg</div>
+            <div class="png" onclick="show('png')">Png</div>
         </div>
     </header> 
     <div id="main">
@@ -126,14 +127,17 @@
         </div>
     </div>
     <script>
-        function hide(){
-            
+        function show(elId){
+            const elements = document.querySelectorAll('.element');
+                elements.forEach(el => {
+                    if(!el.classList.contains('hidden')) el.classList.add('hidden')
+                })
+            document.querySelector(`.${elId}`).classList.remove('hidden');
         }
         function draw(){
             const canvas = document.getElementById("cnv");
             const ctx = canvas.getContext("2d");
 
-            ctx.strokeStyle="rgb(0,0,0)";
             ctx.fillStyle="black";
             ctx.strokeStyle="black";
 
