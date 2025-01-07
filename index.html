@@ -62,9 +62,29 @@
         }
 
         #container {
-           width: 50%; 
-           height: 50%;
+           display: flex;
+           width: 500; 
+           height: 500;
            border: 1px solid black;
+           overflow: hidden;
+        }
+        .element{
+            display: grid;
+            place-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        .element canvas{
+            width: 100%;
+            height: 100%;
+        }
+        .element img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .element.hidden {
+            display: none;
         }
         
     </style>
@@ -84,35 +104,39 @@
     <div id="main">
         <div id="container">
             
-            <div class="element png">
-
+            <div class="element png hidden">
+                <img src="imgs/NikeLogoPng.png" alt="">
             </div>
-            <div class="element svg">
-
+            <div class="element svg hidden">
+                <svg width="5.63in" height="5.33in" viewBox="0 0 489 400">
+                    <path fill="black" stroke="black" stroke-width="1" d="M 97.25,143.75
+                        C 97.25,143.75 70.50,201.50 110.75,216.50
+                            126.00,226.50 164.75,212.75 164.75,212.75
+                            164.75,212.75 466.75,130.25 466.75,130.25
+                            466.75,130.25 232.67,232.00 233.33,232.67
+                            234.00,233.33 137.00,273.75 137.00,273.75
+                            137.00,273.75 65.27,302.73 48.36,254.18
+                            35.27,207.64 97.25,143.75 97.25,143.75 Z" />
+                </svg>
             </div>
             <div class="element bezier-canvas">
-                <canvas id="cnv" onload="draw()">
+                <canvas height="500" width="500"  id="cnv" onload="draw()">
                 </canvas>
             </div>
         </div>
     </div>
     <script>
+        function hide(){
+            
+        }
         function draw(){
             const canvas = document.getElementById("cnv");
-            const ctx = canvas.getContext('2d');
+            const ctx = canvas.getContext("2d");
 
-            ctx.save();
-            ctx.strokeStyle="rgba(0,0,0,0)";
-            ctx.miterLimit=4;
-            ctx.font="15px ''";
-            ctx.font="   15px ''";
-            ctx.scale(0.5112474437627812,0.5112474437627812);
-            ctx.translate(0.00019559999999785305,0);
-            ctx.scale(0.3199992,0.3199992);
-            ctx.save();
+            ctx.strokeStyle="rgb(0,0,0)";
             ctx.fillStyle="black";
             ctx.strokeStyle="black";
-            ctx.font="   15px ''";
+
             ctx.beginPath();
             ctx.moveTo(97.25,143.75);
             ctx.bezierCurveTo(97.25,143.75,70.5,201.5,110.75,216.5);
@@ -125,9 +149,10 @@
             ctx.closePath();
             ctx.fill();
             ctx.stroke();
-            ctx.restore();
-            ctx.restore();
         }
+        document.addEventListener("DOMContentLoaded", () => {
+            draw();
+        });
     </script>
 </body>
 </html>
