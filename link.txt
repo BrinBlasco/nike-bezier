@@ -1,2 +1,3 @@
 
 Github: https://github.com/BrinBlasco/nike-bezier
+Page: https://brinblasco.github.io/nike-bezier
