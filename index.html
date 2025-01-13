@@ -82,7 +82,16 @@
             display: flex;
             width: 500px;
             height: 500px;
-            transition: translate 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .slider.first{
+            transform: translateX(0px);
+        }
+        .slider.second{
+            transform: translateX(-500px);
+        }
+        .slider.third{
+            transform: translateX(-1000px);
         }
         .slider .element {
             width: 500px;
@@ -110,11 +119,11 @@
         <div class="logo">
         </div>
         <div class="menu">
-            <div class="bezier" onclick="show('bezier')">
+            <div class="bezier" onclick="add('first')">
                 Bezier
             </div>
-            <div class="svg" onclick="show('svg')">Svg</div>
-            <div class="png" onclick="show('png')">Png</div>
+            <div class="svg" onclick="add('second')">Svg</div>
+            <div class="png" onclick="add('third')">Png</div>
         </div>
     </header>
     <div id="main">
@@ -143,12 +152,18 @@
         </div>
     </div>
     <script>
-        function show(elId) {
-            const elements = document.querySelectorAll('.element');
-            elements.forEach(el => {
-                if (!el.classList.contains('hidden')) el.classList.add('hidden')
-            })
-            document.querySelector(`.${elId}`).classList.remove('hidden');
+        function add(className){
+            remove();
+            const slider = document.querySelector(".slider");
+            slider.classList.add(className);
+        }
+        function remove(){
+            const slider = document.querySelector(".slider");
+            if(slider.classList.contains("first") || slider.classList.contains("second") || slider.classList.contains("third")) {
+                slider.classList.remove("third");
+                slider.classList.remove("second");
+                slider.classList.remove("first");
+            }
         }
         function draw() {
             const canvas = document.getElementById("cnv");
