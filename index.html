@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nike</title>
     <link rel="shortcut icon" href="./imgs/NikeLogoSvg.svg" type="image/x-icon" sizes="any">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,7 +19,7 @@
         html,
         body {
             height: 100%;
-            font-family: "Sofia Sans", sans-serif;
+            font-family: "Fira Code", serif;
         }
 
         header {
@@ -28,9 +31,9 @@
         }
 
         .logo {
-            margin-left: 5rem;
+            margin-left: 12rem;
             width: 5rem;
-            height: 5rem;
+            height: 4rem;
             background-image: url('./imgs/NikeLogoHeaderPng.png');
             background-size: contain;
             background-position: center;
@@ -41,23 +44,20 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-right: 5rem;
+            margin-right: 12rem;
         }
 
         .menu>* {
-            font-size: 15px;
-            padding-bottom: 10px;
-            padding-top: 10px;
+            font-size: 18px;
+            font-weight: 800;
+            height: 100%;
             width: 150px;
+            line-height: 4rem;
             text-align: center;
             cursor: pointer;
-            border-radius: 10px;
-            margin-left: 1rem;
-            background-color: rgb(166, 166, 166);
         }
 
         .menu>*:hover {
-            border: 2px solid rgb(109, 109, 109);
             background-color: lightgray;
         }
 
@@ -72,7 +72,6 @@
             position: relative;
             width: 500px;
             height: 500px;
-            border: 1px solid black;
             overflow: hidden;
         }
         .slider {
@@ -110,6 +109,20 @@
             display: none;
         }
 
+        .element.svg {
+            background-image: url("./white-sneakers.png");
+            background-size: contain;
+        }
+        .element.bezier-canvas{
+            background-image: url("./white-tshirt.png");
+            background-size: contain;
+        }
+        .element.png{}
+
+        .element.svg svg {
+            transform: scale(0.4) translate(220px, -50px);
+        }
+
         
     </style>
 </head>
@@ -119,11 +132,11 @@
         <div class="logo">
         </div>
         <div class="menu">
-            <div class="bezier" onclick="add('first')">
+            <div class="png" onclick="add('first')">Png</div>
+            <div class="svg" onclick="add('second')">Svg</div>
+            <div class="bezier" onclick="add('third')">
                 Bezier
             </div>
-            <div class="svg" onclick="add('second')">Svg</div>
-            <div class="png" onclick="add('third')">Png</div>
         </div>
     </header>
     <div id="main">
@@ -151,6 +164,9 @@
             </div>
         </div>
     </div>
+    <footer>
+        
+    </footer>
     <script>
         function add(className){
             remove();
@@ -172,6 +188,8 @@
             ctx.fillStyle = "black";
             ctx.strokeStyle = "black";
 
+            ctx.scale(0.3, 0.3);
+            ctx.translate(590, 250);
             ctx.beginPath();
             ctx.moveTo(97.25, 143.75);
             ctx.bezierCurveTo(97.25, 143.75, 70.5, 201.5, 110.75, 216.5);
